@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<title>Niranjan D – Avionics Embedded Software Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#000; --panel:rgba(8,12,22,.84); --ink:#F4F7FD; --muted:#B0BED3; --cyan:#4FD8FF; --amber:#FFB84D; --line:#1D2A40;
+  --display:"Sora","Segoe UI",Arial,sans-serif; --body:"Inter","Segoe UI",Arial,sans-serif;
+  color-scheme:dark; box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:4.5rem;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:1.05rem;line-height:1.7}
+a{color:var(--cyan)}
+a:focus-visible,.btn:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
+#sky{position:fixed;inset:0;overflow:hidden;z-index:0;pointer-events:none}
+.layer{position:absolute;left:0;top:0;width:100%;will-change:transform}
+.star{position:absolute;border-radius:50%;background:#fff;animation:tw var(--d,3s) ease-in-out var(--l,0s) infinite}
+@keyframes tw{0%,100%{opacity:.15}50%{opacity:1}}
+.page{position:relative;z-index:1}
+.wrap{max-width:64rem;margin:0 auto;padding:0 1.25rem}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:rgba(0,0,0,.8);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:.8rem 0}
+.bar .wrap{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.brand{font-family:var(--display);font-weight:700}
+nav{display:flex;gap:1.25rem;flex-wrap:wrap;font-size:.95rem;font-weight:500}
+nav a{color:var(--muted);text-decoration:none}
+nav a:hover{color:var(--cyan)}
+.hero{padding:5rem 0 3.5rem;min-height:80vh;display:flex;flex-direction:column;justify-content:center}
+.role{color:var(--cyan);font-family:var(--display);font-weight:500;margin:0 0 .6rem}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(2.4rem,7vw,4.4rem);line-height:1.05;margin:0 0 1.1rem;letter-spacing:-.02em;max-width:17ch}
+.lede{color:var(--muted);max-width:38rem;margin:0 0 1.5rem}
+.btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:2rem}
+.btn{display:inline-block;padding:.7rem 1.2rem;border-radius:8px;font-weight:600;text-decoration:none;font-size:.98rem}
+.btn.p{background:var(--cyan);color:#021018}
+.btn.s{border:1px solid var(--cyan);color:var(--cyan)}
+.badges{display:flex;flex-wrap:wrap;gap:.6rem}
+.badge{display:flex;align-items:center;gap:.45rem;border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:.3rem .8rem .3rem .5rem;font-size:.85rem;font-weight:600;color:var(--ink)}
+.ico{width:22px;height:22px;fill:none;stroke:var(--cyan);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;flex:none;animation:bob 5s ease-in-out infinite}
+.badge:nth-child(2n) .ico{stroke:var(--amber);animation-delay:-1.5s}
+.badge:nth-child(3n) .ico{animation-delay:-3s}
+@keyframes bob{50%{transform:translateY(-2px)}}
+section{padding:3.5rem 0;border-top:1px solid var(--line)}
+h2{font-family:var(--display);font-weight:700;font-size:1.8rem;margin:0 0 .5rem}
+.sub{color:var(--muted);margin:0 0 2rem;max-width:40rem}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.5rem;margin-bottom:1.5rem}
+.card h3{font-family:var(--display);font-size:1.3rem;margin:0 0 .25rem;display:flex;align-items:center;gap:.6rem}
+.card h3 .ico{width:28px;height:28px;stroke:var(--amber)}
+.meta{color:var(--amber);font-size:.9rem;font-weight:600;margin:0 0 .9rem}
+.card p{margin:0 0 .9rem;max-width:44rem}
+.card h4{font-family:var(--display);font-size:.95rem;color:var(--cyan);margin:1.1rem 0 .4rem}
+.card ul{margin:0;padding-left:1.2rem;max-width:44rem}
+.card li{margin-bottom:.35rem}
+.chips{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem}
+.chip{border:1px solid var(--line);background:#050912;color:var(--muted);border-radius:999px;padding:.15rem .7rem;font-size:.82rem}
+.proof{margin-top:1.1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1rem}
+.box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:1.2rem}
+.box h3{font-family:var(--display);font-size:1.05rem;color:var(--amber);margin:0 0 .5rem;display:flex;align-items:center;gap:.5rem}
+.box p,.box ul{margin:0;color:var(--muted);font-size:.98rem}
+.box ul{padding-left:1.1rem}
+.contact-list{list-style:none;padding:0;margin:1.25rem 0 0;display:grid;gap:.6rem;font-size:1.05rem}
+.contact-list b{display:inline-block;min-width:6.5rem;color:var(--amber);font-weight:600}
+footer{border-top:1px solid var(--line);padding:1.75rem 0;color:var(--muted);font-size:.9rem}
+#hud{position:fixed;right:1rem;bottom:calc(1rem + env(safe-area-inset-bottom,0px));z-index:6;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:.55rem .8rem;font-family:var(--display);font-size:.78rem;color:var(--muted);min-width:9.5rem}
+#hud b{color:var(--cyan);font-weight:700}
+#hud .track{height:3px;background:var(--line);border-radius:2px;margin-top:.4rem;overflow:hidden}
+#hud .fill{height:100%;width:0;background:var(--amber)}
+@media (max-width:560px){#hud{left:1rem;right:1rem}}
+@media (prefers-reduced-motion:reduce){.star{animation:none;opacity:.7}.ico{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-do" viewBox="0 0 24 24"><path d="M7 3h8l4 4v14H7z M15 3v4h4 M10 14l2 2 4-4"/></symbol>
+  <symbol id="i-fms" viewBox="0 0 24 24"><path d="M5 19c0-6 6-3 8-8s4-4 6-6"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="5" r="2"/></symbol>
+  <symbol id="i-bus" viewBox="0 0 24 24"><path d="M2 12h4V6h3v12h3V9h3v6h3v-3h4"/></symbol>
+  <symbol id="i-misra" viewBox="0 0 24 24"><path d="M4 6h2M4 12h2M4 18h2M9 6h11M9 12h11M9 18h11"/></symbol>
+  <symbol id="i-tcp" viewBox="0 0 24 24"><circle cx="5" cy="12" r="3"/><circle cx="19" cy="12" r="3"/><path d="M8 10h8M16 14H8"/></symbol>
+  <symbol id="i-imu" viewBox="0 0 24 24"><circle cx="12" cy="12" r="2"/><path d="M12 10V3M13.7 13l6.3 3.7M10.3 13L4 16.7"/></symbol>
+  <symbol id="i-sil" viewBox="0 0 24 24"><path d="M20 12a8 8 0 1 1-3-6.2M20 4v5h-5"/></symbol>
+  <symbol id="i-chip" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" rx="1"/><path d="M10 3v4M14 3v4M10 17v4M14 17v4M3 10h4M3 14h4M17 10h4M17 14h4"/></symbol>
+  <symbol id="i-rtos" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+</defs></svg>
+
+<div id="sky" aria-hidden="true"><div class="layer" id="l1"></div><div class="layer" id="l2"></div><div class="layer" id="l3"></div></div>
+
+<div class="page">
+<header class="bar"><div class="wrap">
+  <span class="brand">Niranjan D</span>
+  <nav aria-label="Sections"><a href="#top">Home</a><a href="#projects">Projects</a><a href="#skills">Skills</a><a href="#training">Training</a><a href="#education">Education</a><a href="#contact">Contact</a></nav>
+</div></header>
+
+<main>
+<div class="wrap hero" id="top" data-name="Home">
+  <p class="role">Avionics Embedded Software Engineer</p>
+  <h1>I build flight software and test how it behaves when things go wrong.</h1>
+  <p class="lede">I’m Niranjan, a 2026 B.Tech graduate in Electronics and Communication Engineering with a minor in Unmanned Aerial Vehicles. My projects cover flight management, aircraft telemetry and sensor fault monitoring, written in C and built with DO-178C-inspired practices. I’m currently taking the ECEP Advanced Embedded Systems course at Emertxe.</p>
+  <div class="btns"><a class="btn p" href="#contact">Contact me</a><a class="btn s" href="#projects">See my projects</a></div>
+  <div class="badges" aria-label="Avionics topics">
+    <span class="badge"><svg class="ico"><use href="#i-do"/></svg>DO-178C</span>
+    <span class="badge"><svg class="ico"><use href="#i-fms"/></svg>Flight management</span>
+    <span class="badge"><svg class="ico"><use href="#i-bus"/></svg>ARINC 429</span>
+    <span class="badge"><svg class="ico"><use href="#i-misra"/></svg>MISRA C</span>
+    <span class="badge"><svg class="ico"><use href="#i-sil"/></svg>Software-in-the-loop</span>
+    <span class="badge"><svg class="ico"><use href="#i-tcp"/></svg>TCP/IP telemetry</span>
+    <span class="badge"><svg class="ico"><use href="#i-rtos"/></svg>RTOS</span>
+  </div>
+</div>
+
+<section id="projects" data-name="Projects"><div class="wrap">
+  <h2>Avionics projects</h2>
+  <p class="sub">Each project below was built and tested end to end. The tests I ran are listed with each one.</p>
+
+  <article class="card">
+    <h3><svg class="ico"><use href="#i-tcp"/></svg>Aircraft TCP Telemetry Simulation Framework</h3>
+    <p class="meta">October 2026 · C · Linux · POSIX threads · TCP/IP</p>
+    <p>An eight-channel telemetry simulator that behaves like an aircraft sending data to a ground station. Each channel runs on its own thread and sends frames over a TCP client–server link, so the receiver has to cope with several data streams at once, as an avionics system does.</p>
+    <h4>What I built</h4>
+    <ul>
+      <li>Eight concurrent telemetry channels using POSIX multithreading in C on Linux.</li>
+      <li>A TCP/IP client–server link with acknowledgement and frame tracking, so every frame sent can be matched to a frame received.</li>
+      <li>A fault injection mechanism that creates communication problems on purpose, to see how the system reacts.</li>
+      <li>Structured logging of every frame, so a run can be reviewed afterwards.</li>
+    </ul>
+    <h4>How I tested it</h4>
+    <ul>
+      <li>Measured latency, jitter, throughput and frame delivery for each run.</li>
+      <li>Compared normal runs with fault-injected runs to see where frames were delayed or lost.</li>
+    </ul>
+    <div class="chips"><span class="chip">Multithreading</span><span class="chip">Fault injection</span><span class="chip">Performance analysis</span><span class="chip">Data logging</span></div>
+    <p class="proof"><a class="btn s" href="https://github.com/niranjanplaceoff-collab/Linux-Based-POSIX-Multithreaded-TCP-IP-Telemetry-Simulation-using-C">View source code on GitHub</a></p>
+  </article>
+
+  <article class="card">
+    <h3><svg class="ico"><use href="#i-fms"/></svg>Flight Management System, Software-in-the-Loop</h3>
+    <p class="meta">April 2026 · C · MATLAB/Simulink · TCP · Linux</p>
+    <p>A flight management architecture tested entirely in software. A MATLAB/Simulink model acts as the aircraft and talks over TCP to a navigation server I wrote in C on Linux. This is the software-in-the-loop approach used to check flight logic before it runs on real hardware.</p>
+    <h4>What I built</h4>
+    <ul>
+      <li>A C server on Linux that performs the navigation calculations: distance and bearing between positions.</li>
+      <li>Waypoint sequencing, so the system moves through a flight plan one waypoint at a time.</li>
+      <li>A TCP client in MATLAB/Simulink that sends aircraft state and receives navigation results, forming a closed simulation loop.</li>
+    </ul>
+    <h4>How I worked</h4>
+    <ul>
+      <li>Followed DO-178C-inspired development practices for the software.</li>
+      <li>Considered DO-330-inspired principles for qualifying the tools used.</li>
+    </ul>
+    <div class="chips"><span class="chip">SIL testing</span><span class="chip">Navigation</span><span class="chip">DO-178C</span><span class="chip">DO-330</span></div>
+  </article>
+
+  <article class="card">
+    <h3><svg class="ico"><use href="#i-imu"/></svg>ESP32 IMU Sensor Health and Fault Monitoring</h3>
+    <p class="meta">June 2026 · ESP32 · I²C · MPU6050 · Wokwi</p>
+    <p>A monitor that checks whether an inertial sensor can be trusted. Flight systems depend on accelerometer and gyroscope data, so this project reads a six-axis MPU6050 over I²C and decides in real time whether its readings are healthy.</p>
+    <h4>What I built</h4>
+    <ul>
+      <li>Data acquisition from the MPU6050 accelerometer and gyroscope over I²C.</li>
+      <li>Range checks, which catch values outside what the sensor can physically report.</li>
+      <li>Plausibility checks, which catch values that are in range but don’t make sense.</li>
+      <li>Timeout checks, which catch a sensor that has stopped responding.</li>
+      <li>Fault classification and status indication, so the type of fault is clear at a glance.</li>
+    </ul>
+    <h4>How I tested it</h4>
+    <ul>
+      <li>Ran controlled fault-injection tests in the Wokwi simulator, and checked that each injected fault was detected and classified correctly.</li>
+    </ul>
+    <div class="chips"><span class="chip">Sensor validation</span><span class="chip">Health monitoring</span><span class="chip">Fault classification</span><span class="chip">I²C</span></div>
+  </article>
+
+  <article class="card">
+    <h3><svg class="ico"><use href="#i-chip"/></svg>ADAS Prototype on NVIDIA Jetson Nano</h3>
+    <p class="meta">November 2025 · Python · Jetson Nano · ESP32 · RTOS concepts</p>
+    <p>A driver-assistance prototype that runs on an NVIDIA Jetson Nano and combines camera vision with distance sensors. It watches the road, watches the driver, and triggers a safety response when something looks wrong. It shows the same ideas avionics relies on: several inputs, timing, and a safe reaction.</p>
+    <h4>What I built</h4>
+    <ul>
+      <li>Vision on the Jetson Nano, written in Python and run directly on the board: lane detection, vehicle detection and traffic-sign recognition.</li>
+      <li>Sensor fusion that combines the camera results with IR and ultrasonic distance readings from ESP32 units, so the safety decision uses more than one source.</li>
+      <li>Driver drowsiness monitoring, so the system reacts to the driver as well as the road.</li>
+      <li>A sensor-based safety response that acts on the fused data.</li>
+      <li>RTOS scheduling concepts applied to organise the camera, sensor and alert work as separate tasks with timing in mind.</li>
+    </ul>
+    <div class="chips"><span class="chip">Sensor fusion</span><span class="chip">Embedded vision</span><span class="chip">RTOS scheduling</span><span class="chip">Jetson Nano</span><span class="chip">ESP32</span></div>
+  </article>
+</div></section>
+
+<section id="skills" data-name="Skills"><div class="wrap">
+  <h2>Skills</h2>
+  <p class="sub">The tools and standards I use for avionics software.</p>
+  <div class="grid">
+    <div class="box"><h3><svg class="ico"><use href="#i-misra"/></svg>Languages</h3><p>C, Embedded C, C++, Python</p></div>
+    <div class="box"><h3><svg class="ico"><use href="#i-chip"/></svg>Hardware</h3><p>ARM Cortex-M, STM32, ESP32, ATmega328P, NVIDIA Jetson Nano</p></div>
+    <div class="box"><h3><svg class="ico"><use href="#i-bus"/></svg>Protocols and buses</h3><p>TCP/IP, UART/USART, SPI, I²C, CAN, ARINC 429 (fundamentals)</p></div>
+    <div class="box"><h3><svg class="ico"><use href="#i-sil"/></svg>Software</h3><p>Linux/Ubuntu, POSIX threads, multithreading, client–server design, software-in-the-loop, MATLAB, Simulink</p></div>
+    <div class="box"><h3><svg class="ico"><use href="#i-tcp"/></svg>Tools</h3><p>GCC, STM32CubeIDE, STM32CubeMX, ESP-IDF, Keil µVision, Wokwi, KiCad, Git, GitHub</p></div>
+    <div class="box"><h3><svg class="ico"><use href="#i-do"/></svg>Avionics standards</h3><p>DO-178C, DO-330, MISRA C (all fundamentals)</p></div>
+  </div>
+</div></section>
+
+<section id="training" data-name="Training"><div class="wrap">
+  <h2>Training, awards and certificates</h2>
+  <div class="grid" style="margin-top:1.5rem">
+    <div class="box"><h3>Industrial training</h3><p>E-Drive: Electric Vehicle and Automotive Embedded Systems, My Equation Education, June–August 2026. Covered vehicle architecture, battery systems and BMS fundamentals, power electronics, DC-DC converters, inverters and SOC estimation, plus ARM Cortex-M, STM32, CAN/CAN-FD, RTOS and AUTOSAR fundamentals.</p></div>
+    <div class="box" style="grid-column:1/-1"><h3>In progress: ECEP Advanced Embedded Systems, Emertxe</h3><p>A professional course covering software and hardware:</p><div class="chips"><span class="chip">Linux</span><span class="chip">Advanced C</span><span class="chip">Data Structures</span><span class="chip">C++</span><span class="chip">Basic Electronics</span><span class="chip">Microcontrollers (PIC)</span><span class="chip">Linux Internals: sockets, threads, IPC</span><span class="chip">Embedded Linux on ARM: BeagleBone, cross-compilation, kernel, U-Boot</span><span class="chip">Qt (GUI)</span></div></div>
+    <div class="box"><h3>Certificates</h3><ul><li>Signal Processing with Simulink</li><li>DSP for FPGA</li><li>Communication Systems Modeling with Simulink</li><li>Programming Zynq RFSoCs using Simulink</li></ul></div>
+    <div class="box"><h3>Competitions</h3><ul><li>Robo Race, winner: built an autonomous robot in LabVIEW and took 1st place.</li><li>MATLAB/Simulink Coding Challenge, finalist.</li></ul></div>
+  </div>
+</div></section>
+
+<section id="education" data-name="Education"><div class="wrap">
+  <h2>Education</h2>
+  <div class="grid" style="margin-top:1.5rem">
+    <div class="box"><h3>B.Tech Electronics and Communication Engineering</h3><p>Kalasalingam Academy of Research and Education, Krishnankoil, 2022–2026. CGPA 8.15.</p></div>
+    <div class="box"><h3>Minor in Unmanned Aerial Vehicles</h3><p>Kalasalingam Academy of Research and Education, 2023–2025.</p></div>
+  </div>
+</div></section>
+
+<section id="contact" data-name="Contact"><div class="wrap">
+  <h2>Contact</h2>
+  <p class="sub">I’m looking for an entry-level avionics embedded software role. Email or call me, and I’ll reply quickly.</p>
+  <ul class="contact-list">
+    <li><b>Email</b><a href="mailto:niranjanplaceoff@gmail.com">niranjanplaceoff@gmail.com</a></li>
+    <li><b>Phone</b><a href="tel:+918838805090">+91 88388 05090</a></li>
+    <li><b>LinkedIn</b><a href="https://www.linkedin.com/in/niranjan-d">linkedin.com/in/niranjan-d</a></li>
+    <li><b>GitHub</b><a href="https://github.com/niranjanplaceoff-collab">github.com/niranjanplaceoff-collab</a></li>
+  </ul>
+</div></section>
+</main>
+<footer><div class="wrap">© 2026 Niranjan D · Madurai, India</div></footer>
+</div>
+
+<div id="hud" aria-hidden="true">Section: <b id="hs">Home</b><div class="track"><div class="fill" id="hf"></div></div></div>
+
+<script>
+(function(){
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cfg=[{id:'l1',n:70,s:1,f:.08},{id:'l2',n:45,s:1.6,f:.18},{id:'l3',n:22,s:2.3,f:.34}];
+  var H=0;
+  function build(){
+    H=window.innerHeight;
+    cfg.forEach(function(c){
+      var el=document.getElementById(c.id);
+      el.style.height=(H*2)+'px';
+      var html='';
+      for(var i=0;i<c.n;i++){
+        var x=Math.random()*100,y=Math.random()*H;
+        var d=(2+Math.random()*4).toFixed(1),l=(Math.random()*5).toFixed(1);
+        var st='left:'+x.toFixed(2)+'%;width:'+c.s+'px;height:'+c.s+'px;--d:'+d+'s;--l:-'+l+'s;';
+        html+='<i class="star" style="'+st+'top:'+y.toFixed(0)+'px"></i>';
+        html+='<i class="star" style="'+st+'top:'+(y+H).toFixed(0)+'px"></i>';
+      }
+      el.innerHTML=html;
+    });
+    move();
+  }
+  function move(){
+    if(reduce)return;
+    var y=window.scrollY||0;
+    cfg.forEach(function(c){
+      document.getElementById(c.id).style.transform='translate3d(0,'+(-((y*c.f)%H))+'px,0)';
+    });
+    var max=document.documentElement.scrollHeight-window.innerHeight;
+    document.getElementById('hf').style.width=(max>0?Math.min(100,y/max*100):0)+'%';
+    var secs=document.querySelectorAll('[data-name]'),cur='Home';
+    for(var i=0;i<secs.length;i++){if(secs[i].getBoundingClientRect().top<window.innerHeight*.4)cur=secs[i].getAttribute('data-name');}
+    document.getElementById('hs').textContent=cur;
+  }
+  var tick=false;
+  window.addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(function(){move();tick=false;});}},{passive:true});
+  window.addEventListener('resize',build);
+  build();
+})();
+</script>
+</body>
+</html>
